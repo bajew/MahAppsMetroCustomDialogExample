@@ -27,9 +27,20 @@ namespace MahAppsMetroCustomDialogExample
             InitializeComponent();
         }
 
+        private string Lorem(int amountOfLines)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < amountOfLines; i++)
+                sb.AppendLine("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata ");
+
+            return sb.ToString();
+
+        }
+
         private async void btnMessage_Click(object sender, RoutedEventArgs e)
         {
-            await this.ShowMessageAsync("Example Message", "Your message here");
+
+            await this.ShowMessageAsync("Example Message", Lorem(1));
         }
         private async void btnMessage2_Click(object sender, RoutedEventArgs e)
         {
@@ -40,12 +51,12 @@ namespace MahAppsMetroCustomDialogExample
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             var loginData = await this.ShowLoginAsync("Login", "Mit MA-Kennung anmelden");
-            lblUser.Content = loginData.Username; 
+            lblUser.Content = loginData.Username;
         }
 
         private async void btnProgress_Click(object sender, RoutedEventArgs e)
         {
-            int delay = 1000; 
+            int delay = 1000;
             var progController = await this.ShowProgressAsync("Progress", "Lade daten...");
             progController.SetIndeterminate();
 
@@ -74,7 +85,7 @@ namespace MahAppsMetroCustomDialogExample
 
             progController.SetMessage("Überprüfe daten...");
             await Task.Delay(delay);
-            progController.SetProgress(3); 
+            progController.SetProgress(3);
 
 
             await progController.CloseAsync();
@@ -82,11 +93,12 @@ namespace MahAppsMetroCustomDialogExample
 
         private async void btnCustom_Click(object sender, RoutedEventArgs e)
         {
-           var result = await this.ShowMyDialogAsync("My Dialog Test", "Messsage");
-            lblUser.Content = result.Result; 
+
+            var result = await this.ShowMyDialogAsync("My Dialog Test", Lorem(1));
+            lblUser.Content = result.Result;
 
         }
 
-     
+
     }
 }

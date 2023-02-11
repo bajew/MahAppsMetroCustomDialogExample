@@ -30,9 +30,12 @@
                 <Button x:Name="btnProgress2" Click="btnProgress2_Click">Progress Dialog 2</Button>
                 <Button x:Name="btnCustom" Click="btnCustom_Click" >Custom Dialog</Button>
             </StackPanel>
-            <GroupBox Header="Nachfogetypen">
+            <GroupBox Header="Data">
                 <DataGrid>
-
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Column1"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Column2"></DataGridTextColumn>
+                    </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
             <Label x:Name="lblUser"></Label>

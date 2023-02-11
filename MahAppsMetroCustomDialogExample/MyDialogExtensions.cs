@@ -18,16 +18,18 @@ namespace MahAppsMetroCustomDialogExample
                 DataContext = new MyDialogViewModel()
                 {
                     Titel = title,
-                    Message = message
+                    Message = message, 
                 },
             };
 
             MyDialog.Close closingHandler = () => { window.HideMetroDialogAsync(dialog); };
+            (dialog.DataContext as MyDialogViewModel)!.CosingHandler = closingHandler;
+            
             await window.ShowMetroDialogAsync(dialog);
             dialog.CloseDialog += closingHandler;
             await dialog.WaitUntilUnloadedAsync();
             dialog.CloseDialog -= closingHandler;
-            return new MyDialogResult();
+            return dialog.Result;
         }
 
 

@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using ControlzEx;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -23,11 +24,12 @@ namespace MahAppsMetroCustomDialogExample
     public partial class MyDialog : CustomDialog
     {
         public delegate void Close();
-        public event Close CloseDialog; 
-        public MyDialogResult Result { get; set; }
+        public event Close CloseDialog;
+        public MyDialogResult Result { get; set; } = new MyDialogResult();
         public MyDialog()
         {
             InitializeComponent();
+           
         }
 
         public MyDialog(MetroWindow parentWindow) : base(parentWindow)
@@ -42,9 +44,22 @@ namespace MahAppsMetroCustomDialogExample
         {
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+
+        private void ButtonNegative_Click(object sender, RoutedEventArgs e)
         {
-            CloseDialog?.Invoke();    
+            Result.Result = "Negative";
+            CloseDialog?.Invoke();
+        }
+
+        private void ButtonAffirmative_Click(object sender, RoutedEventArgs e)
+        {
+            Result.Result = "Affirmative";
+            CloseDialog?.Invoke();
+        }
+
+        private void CustomDialog_Loaded(object sender, RoutedEventArgs e)
+        {
+            KeyboardNavigationEx.Focus(AffirmativeButton);
         }
     }
 }
