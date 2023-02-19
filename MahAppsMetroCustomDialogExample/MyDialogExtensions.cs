@@ -11,13 +11,14 @@ namespace MahAppsMetroCustomDialogExample
 {
     public static class MyDialogExtensions
     {
-        public static async Task<MyDialogResult> ShowMyDialogAsync(this MetroWindow window, string title, string message, List<string> options)
+        public static async Task<MyDialogResult> ShowMyDialogAsync(this MetroWindow window, string title, string message, List<string> options , IconType icon)
         {
             MyDialogViewModel viewModel = new MyDialogViewModel()
             {
                 Titel = title,
                 Message = message,
                 MessageList = options,
+                IconType = icon
             };
 
             MyDialog dialog = new MyDialog()

@@ -8,6 +8,15 @@ using System.Windows.Input;
 
 namespace MahAppsMetroCustomDialogExample
 {
+    public enum IconType
+    {
+        None, 
+        Info, 
+        Warning, 
+        Error, 
+        Question
+    }
+
     public class MyDialogViewModel
     {
         public MyDialogViewModel()
@@ -43,6 +52,8 @@ namespace MahAppsMetroCustomDialogExample
         public ICommand EscCommand { get; set; }
         public string Titel { get; set; }
         public string Message { get; set; }
+
+        public IconType IconType { get; set; }
         public List<string> MessageList { get; set; }
         public string SelectedMessage { get; set; }
         public MyDialog.Close CosingHandler { get; internal set; }

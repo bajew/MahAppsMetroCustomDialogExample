@@ -92,9 +92,47 @@ namespace MahAppsMetroCustomDialogExample
         private async void btnCustom_Click(object sender, RoutedEventArgs e)
         {
 
-            var result = await this.ShowMyDialogAsync("My Dialog Test", "Choose an Optiom", new List<string>() { "Custom Message1", "Custom Message2", "Custom Message3", "Custom Message4" });
+            var result = await this.ShowMyDialogAsync("My Dialog Test", 
+                                                        "Choose an Optiom",
+                                                        new List<string>() { "Custom Message1", "Custom Message2", "Custom Message3", "Custom Message4" },
+                                                        IconType.None);
             lblUser.Content = result.Result + result.SelectedMessage;
 
+        }
+        private async void btnCustomQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await this.ShowMyDialogAsync("My Dialog Test",
+                                                    "Choose an Optiom",
+                                                    new List<string>() { "Custom Message1", "Custom Message2", "Custom Message3", "Custom Message4" },
+                                                    IconType.Question);
+            lblUser.Content = result.Result + result.SelectedMessage;
+        }
+
+        private async void btnCustomError_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await this.ShowMyDialogAsync("My Dialog Test",
+                                                    "Choose an Optiom",
+                                                    new List<string>() { "Custom Message1", "Custom Message2", "Custom Message3", "Custom Message4" },
+                                                    IconType.Error);
+            lblUser.Content = result.Result + result.SelectedMessage;
+        }
+
+        private async void btnCustomWarning_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await this.ShowMyDialogAsync("My Dialog Test",
+                                                    "Choose an Optiom",
+                                                    new List<string>() { "Custom Message1", "Custom Message2", "Custom Message3", "Custom Message4" },
+                                                    IconType.Warning);
+            lblUser.Content = result.Result + result.SelectedMessage;
+        }
+
+        private async void btnCustomInfo_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await this.ShowMyDialogAsync("My Dialog Test",
+                                                                "Choose an Optiom",
+                                                                new List<string>() { "Custom Message1", "Custom Message2", "Custom Message3", "Custom Message4" },
+                                                                IconType.Info);
+            lblUser.Content = result.Result + result.SelectedMessage;
         }
 
 
@@ -109,5 +147,6 @@ namespace MahAppsMetroCustomDialogExample
 
         }
 
+      
     }
 }

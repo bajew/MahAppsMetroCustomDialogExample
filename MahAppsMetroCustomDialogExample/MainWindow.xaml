@@ -17,20 +17,24 @@
     </mah:MetroWindow.RightWindowCommands>
     <Grid>
         <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <StackPanel.Resources>
+            <WrapPanel Orientation="Horizontal">
+                <WrapPanel.Resources>
                     <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
                         <Setter Property="Padding" Value="5"></Setter>
                         <Setter Property="Margin" Value="5"></Setter>
                     </Style>
-                </StackPanel.Resources>
+                </WrapPanel.Resources>
                 <Button x:Name="btnMessage" Click="btnMessage_Click" >Message Dialog</Button>
                 <Button x:Name="btnMessage2" Click="btnMessage2_Click" >Message Dialog2</Button>
                 <Button x:Name="btnLogin" Click="btnLogin_Click">Login Dialog</Button>
                 <Button x:Name="btnProgress" Click="btnProgress_Click">Progress Dialog 1</Button>
                 <Button x:Name="btnProgress2" Click="btnProgress2_Click">Progress Dialog 2</Button>
                 <Button x:Name="btnCustom" Click="btnCustom_Click" >Custom Dialog</Button>
-            </StackPanel>
+                <Button x:Name="btnCustomInfo" Click="btnCustomInfo_Click" >Custom Dialog Info</Button>
+                <Button x:Name="btnCustomWarning" Click="btnCustomWarning_Click" >Custom Dialog Warning</Button>
+                <Button x:Name="btnCustomError" Click="btnCustomError_Click" >Custom Dialog Error</Button>
+                <Button x:Name="btnCustomQuestion" Click="btnCustomQuestion_Click" >Custom Dialog Questiong</Button>
+            </WrapPanel>
             <GroupBox Header="Data">
                 <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding ExampleDataList}">
                     <DataGrid.Columns>
