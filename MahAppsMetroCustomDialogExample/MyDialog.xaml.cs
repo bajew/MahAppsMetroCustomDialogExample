@@ -25,11 +25,11 @@ namespace MahAppsMetroCustomDialogExample
     {
         public delegate void Close();
         public event Close CloseDialog;
-        public MyDialogResult Result { get; set; } = new MyDialogResult();
         public MyDialog()
         {
             InitializeComponent();
            
+
         }
 
         public MyDialog(MetroWindow parentWindow) : base(parentWindow)
@@ -42,19 +42,6 @@ namespace MahAppsMetroCustomDialogExample
 
         public MyDialog(MetroWindow parentWindow, MetroDialogSettings settings) : base(parentWindow, settings)
         {
-        }
-
-
-        private void ButtonNegative_Click(object sender, RoutedEventArgs e)
-        {
-            Result.Result = "Negative";
-            CloseDialog?.Invoke();
-        }
-
-        private void ButtonAffirmative_Click(object sender, RoutedEventArgs e)
-        {
-            Result.Result = "Affirmative";
-            CloseDialog?.Invoke();
         }
 
         private void CustomDialog_Loaded(object sender, RoutedEventArgs e)

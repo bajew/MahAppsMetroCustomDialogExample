@@ -8,6 +8,7 @@ namespace MahAppsMetroCustomDialogExample
 {
     public class MyDialogResult
     {
+        public string SelectedMessage { get; set; }
         public string Result { get; set; } = "Negative";
     }
 }

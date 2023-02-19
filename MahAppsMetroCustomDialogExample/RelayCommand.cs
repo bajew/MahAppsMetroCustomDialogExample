@@ -10,9 +10,16 @@ namespace MahAppsMetroCustomDialogExample
     public class RelayCommand : ICommand
     {
         Action action;
+        Action<object> action2; 
         public RelayCommand(Action action)
         {
             this.action = action;
+            this.action2 = (o) => { action?.Invoke(); };
+        }
+        public RelayCommand(Action<object> action)
+        {
+            this.action2 = action;
+            this.action = () => { action2?.Invoke(null); };
         }
 
         public event EventHandler? CanExecuteChanged;
@@ -24,7 +31,14 @@ namespace MahAppsMetroCustomDialogExample
 
         public void Execute(object? parameter)
         {
-            action?.Invoke(); 
+            if (parameter == null)
+            {
+                action?.Invoke();
+            }
+            else
+            {
+                action2?.Invoke(parameter);
+            }
         }
     }
 }

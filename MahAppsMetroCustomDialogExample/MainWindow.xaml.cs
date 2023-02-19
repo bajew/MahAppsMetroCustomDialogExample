@@ -92,8 +92,8 @@ namespace MahAppsMetroCustomDialogExample
         private async void btnCustom_Click(object sender, RoutedEventArgs e)
         {
 
-            var result = await this.ShowMyDialogAsync("My Dialog Test", Lorem(1));
-            lblUser.Content = result.Result;
+            var result = await this.ShowMyDialogAsync("My Dialog Test", "Choose an Optiom", new List<string>() { "Custom Message1", "Custom Message2", "Custom Message3", "Custom Message4" });
+            lblUser.Content = result.Result + result.SelectedMessage;
 
         }
 

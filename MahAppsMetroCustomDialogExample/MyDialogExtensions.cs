@@ -11,25 +11,28 @@ namespace MahAppsMetroCustomDialogExample
 {
     public static class MyDialogExtensions
     {
-        public static async Task<MyDialogResult> ShowMyDialogAsync(this MetroWindow window, string title, string message)
+        public static async Task<MyDialogResult> ShowMyDialogAsync(this MetroWindow window, string title, string message, List<string> options)
         {
+            MyDialogViewModel viewModel = new MyDialogViewModel()
+            {
+                Titel = title,
+                Message = message,
+                MessageList = options,
+            };
+
             MyDialog dialog = new MyDialog()
             {
-                DataContext = new MyDialogViewModel()
-                {
-                    Titel = title,
-                    Message = message, 
-                },
+                DataContext= viewModel
             };
 
             MyDialog.Close closingHandler = () => { window.HideMetroDialogAsync(dialog); };
-            (dialog.DataContext as MyDialogViewModel)!.CosingHandler = closingHandler;
+            viewModel.CosingHandler = closingHandler;
             
             await window.ShowMetroDialogAsync(dialog);
             dialog.CloseDialog += closingHandler;
             await dialog.WaitUntilUnloadedAsync();
             dialog.CloseDialog -= closingHandler;
-            return dialog.Result;
+            return viewModel.Result;
         }
 
 
