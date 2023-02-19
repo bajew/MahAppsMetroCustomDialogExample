@@ -6,6 +6,7 @@
             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:MahAppsMetroCustomDialogExample"
         mc:Ignorable="d"
+                 Loaded="MetroWindow_Loaded"
                  TitleCharacterCasing="Normal"
         Title="MainWindow" Height="450" Width="800">
     <mah:MetroWindow.RightWindowCommands>
@@ -25,20 +26,29 @@
                 </StackPanel.Resources>
                 <Button x:Name="btnMessage" Click="btnMessage_Click" >Message Dialog</Button>
                 <Button x:Name="btnMessage2" Click="btnMessage2_Click" >Message Dialog2</Button>
-                <Button x:Name="btnLogin" Click="btnLogin_Click">Login Dialog </Button>
+                <Button x:Name="btnLogin" Click="btnLogin_Click">Login Dialog</Button>
                 <Button x:Name="btnProgress" Click="btnProgress_Click">Progress Dialog 1</Button>
                 <Button x:Name="btnProgress2" Click="btnProgress2_Click">Progress Dialog 2</Button>
                 <Button x:Name="btnCustom" Click="btnCustom_Click" >Custom Dialog</Button>
             </StackPanel>
             <GroupBox Header="Data">
-                <DataGrid>
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding ExampleDataList}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Column1"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Column2"></DataGridTextColumn>
+                        <DataGridTextColumn Width="Auto" Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="Auto" Header="Price" Binding="{Binding Price}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="Auto" Header="Amount" Binding="{Binding Amount}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="Auto" Header="Total" IsReadOnly="True" Binding="{Binding Total}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="Auto" Header="Email" Binding="{Binding Email}"></DataGridTextColumn>
                     </DataGrid.Columns>
+
                 </DataGrid>
             </GroupBox>
-            <Label x:Name="lblUser"></Label>
+            <StackPanel Orientation="Horizontal">
+                <Label MinWidth="150" x:Name="lblUser"></Label>
+                <TextBox MinWidth="150" Text="{Binding Data.Email}"/>
+                <Button MinWidth="150" Command="{Binding ValidateCommand}" >Validate</Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

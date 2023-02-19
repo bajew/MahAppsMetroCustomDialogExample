@@ -22,20 +22,18 @@ namespace MahAppsMetroCustomDialogExample
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        MainViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
         }
-
-        private string Lorem(int amountOfLines)
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < amountOfLines; i++)
-                sb.AppendLine("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata ");
+            viewModel = new MainViewModel();
 
-            return sb.ToString();
-
+            DataContext = viewModel;
         }
+
 
         private async void btnMessage_Click(object sender, RoutedEventArgs e)
         {
@@ -99,6 +97,17 @@ namespace MahAppsMetroCustomDialogExample
 
         }
 
+
+
+        private string Lorem(int amountOfLines)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < amountOfLines; i++)
+                sb.AppendLine("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata ");
+
+            return sb.ToString();
+
+        }
 
     }
 }
